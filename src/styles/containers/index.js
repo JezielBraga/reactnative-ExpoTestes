@@ -13,15 +13,15 @@ export default StyleSheet.create({
         backgroundColor: '#0006',
     },
     section: {
-        padding: 10,
-        marginBottom: 10,
+        paddingVertical: 5,
+        paddingHorizontal: 20,
     },
     viewSection: {
         padding: 10,
         backgroundColor: '#FFF',
         borderRadius: 5,
         elevation: 5,
+        marginVertical: 5,
         marginHorizontal: 10,
-        marginBottom: 10,
     },
 });

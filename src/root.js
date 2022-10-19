@@ -1,38 +1,63 @@
-import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 
 import containers from './styles/containers';
 import colors from './styles/colors';
 import text from './styles/text';
 
 const Root = () => {
+  const VisibleSection = () => (
+    <View style={containers.viewSection}>
+      <Text style={text.t3}>Este conteúdo está em uma SEÇÂO VISÍVEL</Text>
+      <Text style={text.t1}>Olá Dev! Isto é um Título!</Text>
+      <Text style={text.t2}>Isto é um subtítulo</Text>
+      <Text style={{ textAlign: 'justify' }}>
+        Este texto tem um tamanho padrão e está
+        sendo exibido sem qualquer formatação.
+      </Text>
+    </View>
+  );
+
+  const NotVisibleSection = () => (
+    <View style={containers.section}>
+      <Text style={text.t3}>Este conteúdo está em uma SEÇÃO NÃO VISÍVEL</Text>
+      <Text style={text.t1}>Olá Dev! Isto é um Título!</Text>
+      <Text style={text.t2}>Isto é um subtítulo</Text>
+      <Text style={{ textAlign: 'justify' }}>
+        Este texto tem um tamanho padrão e está
+        sendo exibido sem qualquer formatação.
+      </Text>
+    </View>
+  );
 
   return (
-    <SafeAreaView style={{ ...containers.container }}>
-      <View style={{ ...containers.section, paddingTop: 30, backgroundColor: colors.primary }}>
-        <Text style={{ ...text.t1, textAlign: 'center' }}>Cor Primária atual</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Cor Primária atual</Text>
       </View>
 
-      <View style={{ flex: 1 }}>
-        <View style={containers.viewSection}>
-          <Text style={text.t3}>Este conteúdo está em uma SEÇÂO VISÍVEL</Text>
-          <Text style={text.t1}>Olá Dev! Isto é um Título!</Text>
-          <Text style={text.t2}>Isto é um subtítulo</Text>
-          <Text>Este texto tem um tamanho padrão e está
-            sendo exibido sem qualquer formatação.</Text>
-        </View>
+      <ScrollView>
+        <VisibleSection />
 
-        <View style={containers.section}>
-          <Text style={{ ...text.t3 }}>Este conteúdo está em uma SEÇÃO NÃO VISÍVEL</Text>
-          <Text style={text.t1}>Olá Dev! Isto é um Título!</Text>
-          <Text style={text.t2}>Isto é um subtítulo</Text>
-          <Text>Este texto tem um tamanho padrão e está
-            sendo exibido sem qualquer formatação.</Text>
-        </View>
-      </View>
+        <NotVisibleSection />
 
-      <View style={{ backgroundColor: colors.secondary }}>
-        <Text style={{ ...text.t1, color: '#fff', textAlign: 'center' }}>
+        <NotVisibleSection />
+
+        <VisibleSection />
+
+        <VisibleSection />
+
+        <NotVisibleSection />
+      </ScrollView>
+
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
           Cor Secundária atual
         </Text>
       </View>
@@ -41,3 +66,26 @@ const Root = () => {
 };
 
 export default Root;
+
+const styles = StyleSheet.create({
+  container: {
+    ...containers.container,
+  },
+  header: {
+    ...containers.section,
+    paddingTop: StatusBar.currentHeight,
+    backgroundColor: colors.primary
+  },
+  headerTitle: {
+    ...text.t1,
+    textAlign: 'center'
+  },
+  footer: {
+    backgroundColor: colors.secondary
+  },
+  footerText: {
+    ...text.t1,
+    color: '#fff',
+    textAlign: 'center'
+  }
+})
