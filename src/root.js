@@ -5,7 +5,7 @@ import containers from './styles/containers';
 import colors from './styles/colors';
 import text from './styles/text';
 
-const App = () => {
+const Root = () => {
 
   return (
     <SafeAreaView style={{ ...containers.container }}>
@@ -40,4 +40,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Root;
