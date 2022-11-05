@@ -1,5 +1,9 @@
 export default {
-    primary: '#FF7518',
-    secondary: '#0000FF',
-    bgColor: '#F0F0F0',
+    primary: "#099",
+    secondary: "",
+    light: "#FFF",
+    neutral: "#888",
+    dark: "#000",
+    alert: "#900",
+    bgColor: "EFEFEF",
 };
